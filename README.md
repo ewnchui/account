@@ -1,2 +1,3 @@
 # account
-Account vote information
+
+a [Sails](http://sailsjs.org) application
