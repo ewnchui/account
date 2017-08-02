@@ -8,15 +8,15 @@ module.exports =
       type: 'string'
 
     estAmt:
-      type: double
+      type: 'integer' 
 
     vendor: 
       type: 'string'
 
     createdDate:
-	  type: 'datetime'
-	  defaultsTo: ->
-		new Date  
+      type: 'datetime'
+      defaultsTo: ->
+        new Date  
 
     createdBy:
       model: 'user'  
