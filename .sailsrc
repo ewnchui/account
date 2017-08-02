@@ -1,0 +1,10 @@
+{
+  "generators": {
+    "modules": {}
+  },
+  "hooks": {
+    "grunt": false,
+    "csrf": false,
+    "session": false
+  }
+}
