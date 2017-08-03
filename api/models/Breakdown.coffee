@@ -4,6 +4,10 @@ module.exports =
   schema: true
 
   attributes:
+    project:
+      type: 'string'
+      required: true
+
     desc:
       type: 'string'
 
@@ -12,6 +16,21 @@ module.exports =
 
     vendor: 
       type: 'string'
+
+    epsRef:
+      type: 'string'
+
+    PO:
+      type: 'string'
+
+    InvDate:
+      type: 'datetime'
+
+    status:
+      type: 'string'
+
+    maintStartDate:
+      type: 'datetime'
 
     createdDate:
       type: 'datetime'
@@ -27,7 +46,6 @@ module.exports =
 
     settledBy:
       model: 'user'  
-      required: true
 
     vote:
       model: 'vote'
