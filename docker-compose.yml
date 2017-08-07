@@ -1,0 +1,16 @@
+version: '2'
+services:
+  account:
+    image: ewnchui/account
+    networks:
+      - mongo_default
+    ports:
+      - 1337
+    env_file:
+      - ./.env
+      - ../.env
+
+networks:
+  default:
+  mongo_default:
+    external: true
