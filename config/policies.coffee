@@ -4,8 +4,8 @@ module.exports =
       '*': false
       find: ['isAuth']
       findOne: ['isAuth']
-      create: ['isAuth']
-      update: ['isAuth']
+      create: ['isAuth', 'isAdmin']
+      update: ['isAuth', 'isOwner']
       add: ['isAuth'] 
 
     VoteController:
@@ -28,6 +28,6 @@ module.exports =
       '*': false
       find: ['isAuth']
       findOne: ['isAuth']
-      create: ['isAuth']
+      create: ['isAuth', 'setOwner']
       update: ['isAuth']
       add: ['isAuth']
