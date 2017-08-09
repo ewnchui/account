@@ -4,12 +4,11 @@ bearer = require 'passport-http-bearer'
 
 passport.use 'bearer', new bearer.Strategy {} , (token, done) ->
   oauth2 = sails.config.oauth2
+  sails.log.debug "verifyUrl: #{oauth2.verifyUrl}"
+  sails.log.debug "scope: #{oauth2.scope}"
+  sails.log.debug "token: #{token}"
   sails.services.oauth2
     .verify oauth2.verifyUrl, oauth2.scope, token
-    .then (info) ->
-      sails.models.user
-        .findOrCreate _.pick(info.user, 'email')
-        .populateAll()
     .then (user) ->
       sails.log.debug user
       done null, user
