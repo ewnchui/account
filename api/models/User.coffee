@@ -7,7 +7,14 @@ module.exports =
     username:
       type: 'string'
       required: true
+
+    email:
+      type: 'string'
+      required: true
       unique: true
+
+    postTitle:
+      type: 'string'
 
     manage:
       collection: 'vote'
