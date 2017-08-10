@@ -5,29 +5,29 @@ module.exports =
       find: ['isAuth']
       findOne: ['isAuth']
       create: ['isAuth', 'isAdmin']
-      update: ['isAuth', 'isOwner']
+      update: ['isAuth', 'isAdmin']
       add: ['isAuth'] 
 
     VoteController:
       '*': false
       find: ['isAuth']
       findOne: ['isAuth']
-      create: ['isAuth']
-      update: ['isAuth']
+      create: ['isAuth','isAdmin']
+      update: ['isAuth','isAdmin']
       add: ['isAuth']
 
     VoteTypeController:
       '*': false
       find: ['isAuth']
       findOne: ['isAuth']
-      create: ['isAuth']
-      update: ['isAuth']
+      create: ['isAuth', 'isAdmin']
+      update: ['isAuth', 'isAdmin']
       add: ['isAuth']
 
     BreakdownController:
       '*': false
       find: ['isAuth']
       findOne: ['isAuth']
-      create: ['isAuth', 'setOwner']
+      create: ['isAuth', 'setCreatedBy']
       update: ['isAuth']
       add: ['isAuth']

@@ -22,6 +22,5 @@ module.exports =
       collection: 'breakdown'
       via: 'vote'
 
-    ownedBy: 
-      collection: 'user'
-      via: 'manage'
+    ownedBy:
+      model: 'user'
