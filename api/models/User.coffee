@@ -4,10 +4,6 @@ module.exports =
   schema: true
 
   attributes:
-    username:
-      type: 'string'
-      required: true
-
     email:
       type: 'string'
       required: true

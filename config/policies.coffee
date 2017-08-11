@@ -6,7 +6,8 @@ module.exports =
       findOne: ['isAuth']
       create: ['isAuth', 'isAdmin']
       update: ['isAuth', 'isAdmin']
-      add: ['isAuth'] 
+      add: ['isAuth']
+      remove: ['isAuth']
 
     VoteController:
       '*': false
@@ -15,6 +16,7 @@ module.exports =
       create: ['isAuth','isAdmin']
       update: ['isAuth','isAdmin']
       add: ['isAuth']
+      remove: ['isAuth']
 
     VoteTypeController:
       '*': false
@@ -23,6 +25,7 @@ module.exports =
       create: ['isAuth', 'isAdmin']
       update: ['isAuth', 'isAdmin']
       add: ['isAuth']
+      remove: ['isAuth']
 
     BreakdownController:
       '*': false
@@ -31,3 +34,4 @@ module.exports =
       create: ['isAuth', 'setCreatedBy']
       update: ['isAuth']
       add: ['isAuth']
+      remove: ['isAuth']

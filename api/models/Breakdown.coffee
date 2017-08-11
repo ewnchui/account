@@ -6,11 +6,10 @@ module.exports =
   attributes:
     group:
       type: 'string'
-      required: true
 
     type:
       type: 'string'
-      enum: ['maintenance','procurement','server farm','EGIS','virement']
+      enum: ['provision', 'maintenance','procurement','server farm','EGIS','virement']
 
     desc:
       type: 'string'
@@ -18,7 +17,7 @@ module.exports =
     qty:
       type: 'integer'
 
-    estAmt:
+    Amt:
       type: 'integer'
 
     vendor: 

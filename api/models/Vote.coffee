@@ -9,7 +9,7 @@ module.exports =
       required: true
       unique: true
 
-    projRefNo:
+    refNo:
       type: 'string'
 
     desc:

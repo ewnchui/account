@@ -8,7 +8,7 @@ passport.use 'bearer', new bearer.Strategy {} , (token, done) ->
     .verify oauth2.verifyUrl, oauth2.scope, token
     .then (info) ->
       sails.models.user
-        .findOrCreate _.pick(info.user, 'username', 'email')
+        .findOrCreate _.pick(info.user, 'email')
         .populateAll()
     .then (user) ->
       sails.log.debug user
