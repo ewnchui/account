@@ -17,7 +17,7 @@ templateCache = require 'gulp-angular-templatecache'
 gulp.task 'default', ['css', 'coffee']
 
 gulp.task 'config', ->
-  params = _.pick process.env, 'AUTHURL', 'CLIENT_ID', 'DB'
+  params = _.pick process.env, 'AUTHURL', 'SCOPE', 'CLIENT_ID'
   fs.writeFileSync 'www/js/config.json', util.inspect(params)
 
 gulp.task 'cssAll', ->

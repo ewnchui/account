@@ -1,3 +1,3 @@
 { AUTHURL: 'https://app.ogcio.gov.hk/auth/',
-  CLIENT_ID: 'account',
-  DB: 'mongodb://@mongo:27017/account' }
+  SCOPE: 'User',
+  CLIENT_ID: 'account' }
