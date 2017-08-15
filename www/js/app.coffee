@@ -7,7 +7,6 @@ angular
 		'starter.controller', 
 		'starter.model', 
 		'util.auth', 
-		'ionic-datepicker', 
 		'ngFancySelect', 
 		'pascalprecht.translate', 
 		'locale'
@@ -30,18 +29,58 @@ angular
 			abstract: true
 			templateUrl: "templates/menu.html"
 	
-		# Account
-		$stateProvider.state 'app.accountList',
-			url: "/account/list"
+		# Db
+		$stateProvider.state 'app.dbList',
+			url: "/db"
 			cache: false
 			views:
 				'menuContent':
-					templateUrl: "templates/account/list.html"
-					controller: 'AccountListCtrl'
+					templateUrl: "templates/db/list.html"
+					controller: 'DbListCtrl'
 			resolve:
 				cliModel: 'model'	
 				collection: (cliModel) ->
 					ret = new cliModel.DbList()
 					ret.$fetch()
 					
-		$urlRouterProvider.otherwise('/account/list')
+		$stateProvider.state 'app.dbMyList',
+			url: "/db/mylist"
+			cache: false
+			views:
+				'menuContent':
+					templateUrl: "templates/db/myList.html"
+					controller: 'DbListCtrl'
+			resolve:
+				cliModel: 'model'	
+				collection: (cliModel) ->
+					ret = new cliModel.MyDbList()
+					ret.$fetch()				
+					
+		$stateProvider.state 'app.dbCreate',
+			url: "/db/create"
+			cache: false
+			views:
+				'menuContent':
+					templateUrl: "templates/db/create.html"
+					controller: 'DbCtrl'
+			resolve:
+				cliModel: 'model'	
+				model: (cliModel) ->
+					ret = new cliModel.Db()
+					
+		$stateProvider.state 'app.dbEdit',
+			url: "/db/edit/:id"
+			cache: false
+			views:
+				'menuContent':
+					templateUrl: "templates/db/edit.html"
+					controller: 'DbCtrl'
+			resolve:
+				id: ($stateParams) ->
+					$stateParams.id
+				cliModel: 'model'	
+				model: (cliModel, id) ->
+					ret = new cliModel.Db({id: id})
+					ret.$fetch()			
+				
+		$urlRouterProvider.otherwise('')

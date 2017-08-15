@@ -17,7 +17,7 @@ platform = ($rootScope, $cordovaInAppBrowser, $location, $http, $ionicModal, aut
 					
 					$rootScope.$on '$cordovaInAppBrowser:exit', (e, event) ->
 						reject("The sign in flow was canceled")
-				
+
 				p
 					.then (data) ->
 						$cordovaInAppBrowser.close()
@@ -25,7 +25,6 @@ platform = ($rootScope, $cordovaInAppBrowser, $location, $http, $ionicModal, aut
 					.catch (err) ->
 						$cordovaInAppBrowser.close()
 						authService.loginCancelled null, err.error
-
 				
 			browser: ->
 				templateStr = """
@@ -37,13 +36,11 @@ platform = ($rootScope, $cordovaInAppBrowser, $location, $http, $ionicModal, aut
 				"""
 				$rootScope.modal = $ionicModal.fromTemplate(templateStr)
 				$rootScope.modal.show()
-
 				
 		func[env.platform()]()
 			
 	auth: auth
-
-
+	
 config =  ($cordovaInAppBrowserProvider) ->
 	opts = 
 		location: 'no'
@@ -57,5 +54,7 @@ config =  ($cordovaInAppBrowserProvider) ->
 		cordova?.plugins.autoStart.enable()
 
 angular.module('platform', ['ionic', 'ngCordova', 'starter.controller'])
+
 	.config ['$cordovaInAppBrowserProvider', config]
+
 	.factory 'platform', ['$rootScope', '$cordovaInAppBrowser', '$location', '$http', '$ionicModal', 'authService', platform]

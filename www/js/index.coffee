@@ -1,4 +1,5 @@
 env = require './env.coffee'
+
 window.oalert = window.alert
 window.alert = (err) ->
 	window.oalert err.data.error
