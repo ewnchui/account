@@ -1,7 +1,7 @@
 <ion-view>
   <ion-nav-buttons side="left">
       <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-      <h1 class="title">All Database</h1>
+      <h1 class="title">Vote</h1>
       <div class="buttons">
           <button class="button icon-right ion-plus-round" on-tap="$event.stopPropagation(); create()"></button>
       </div>
@@ -11,10 +11,9 @@
   <ion-list>
     <ion-item
       class="item-avatar item-complex"
-      on-hold="showAction()"
       ng-repeat="model in collection.models"
       ng-controller="ItemCtrl"
-      ng-include="'templates/db/item.html'">
+      ng-include="'templates/vote/item.html'">
     </ion-item>
     <ion-infinite-scroll
       ng-if="collection.state.skip < collection.state.count"

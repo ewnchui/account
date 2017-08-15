@@ -11,7 +11,7 @@ module.exports =
     opts:
       authUrl: 		"#{config.AUTHURL}/oauth2/authorize/"
       response_type:	"token"
-      scope:			config.OAUTH2_SCOPE
+      scope:			config.SCOPE
       client_id:		config.CLIENT_ID
   mongo:
     url: config.DBURL
