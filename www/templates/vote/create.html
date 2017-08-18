@@ -1,0 +1,31 @@
+<ion-view>
+  <ion-nav-buttons side="left">
+  	<button class="button button-clear icon-left ion-chevron-left" ng-click="$ionicGoBack()"></button>
+  	<h1 class="title">Vote</h1>
+	<button class="button button-clear button-positive" ng-click="save()">OK</button>
+  </ion-nav-buttons>
+  <ion-content padding="true">
+	<div class="list">
+		<label class="item item-input">
+	    	<span class="input-label">Code</span>
+	    	<input type="text" ng-model="model.code" placeHolder="(Required)">
+		</label>
+                <label class="item item-input">
+                <span class="input-label">Description</span>
+                <input type="text" ng-model="model.desc">
+                </label>
+		<label class="item item-input">
+	    	<span class="input-label">Reference Number</span>
+	    	<input type="text" ng-model="model.refNo">
+		</label>
+                <label class="item item-input">
+                <span class="input-label">Type</span>
+                <button class="button button-clear button-positive" ng-click="typeModal.show();$event.preventDefault();$event.stopPropagation();">{{model.type.code || "Select" }}</button>
+                </label>
+                <label class="item item-input">
+                <span class="input-label">Owned By</span>
+                <button class="button button-clear button-positive" ng-click="userModal.show().$event.preventDefault();$event.stopPropagation();">{{model.user.eamil || "Select" }}</button>
+                </label>
+	</div>
+  </ion-content>
+</ion-view>

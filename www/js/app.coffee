@@ -42,6 +42,20 @@ angular
           ret = new cliModel.VoteList()
           ret.$fetch()
 
+    $stateProvider.state 'app.voteCreate',
+      url: "/vote/create"
+      cache: false
+      views:
+        'menuContent':
+           templateUrl: "templates/vote/create.html"
+           controller: 'VoteCtrl'
+      resolve:
+        cliModel: 'model'
+        votetypeList : (cliModel) ->
+          ret = new cliModel.VoteTypeList().$fetch();
+        model: (cliModel) ->
+          ret = new cliModel.Vote()
+
 
   
     $urlRouterProvider.otherwise('/vote')

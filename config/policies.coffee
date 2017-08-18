@@ -14,9 +14,10 @@ module.exports =
       find: ['isAuth']
       findOne: ['isAuth']
       create: ['isAuth','isAdmin']
-      update: ['isAuth','isAdmin']
-      add: ['isAuth']
-      remove: ['isAuth']
+      update: ['isAuth','me', 'canUpdate']
+      destroy: ['isAuth', 'me', 'canUpdate']
+      add: ['isAuth', 'me', 'canUpdate']
+      remove: ['isAuth', 'me', 'canUpdate']
 
     VoteTypeController:
       '*': false

@@ -233,3 +233,9 @@ iframe {
 	width: 100%;
 	border-radius: 4px; 
 }
+.modal-wrapper .pane {
+   height: 60%;
+}
+.toggle {
+   @extend .toggle-positive;
+}

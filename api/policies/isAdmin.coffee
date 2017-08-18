@@ -1,5 +1,4 @@
 assert = require 'assert'
-process.env.ADMIN = "wnchui@yahoo.com"
 [
   'ADMIN'
 ].map (name) ->

@@ -11,7 +11,6 @@ passport.use 'bearer', new bearer.Strategy {} , (token, done) ->
         .findOrCreate _.pick(info.user, 'email')
         .populateAll()
     .then (user) ->
-      sails.log.debug user
       done null, user
     .catch (err) ->
       sails.log.debug err
