@@ -51,11 +51,30 @@ angular
            controller: 'VoteCtrl'
       resolve:
         cliModel: 'model'
-        votetypeList : (cliModel) ->
-          ret = new cliModel.VoteTypeList().$fetch();
         model: (cliModel) ->
           ret = new cliModel.Vote()
+        votetypeList : (cliModel) ->
+          ret = new cliModel.VoteTypeList().$fetch()
+        userList: (cliModel) ->
+          ret = new cliModel.UserList().$fetch()
+        
+    $stateProvider.state 'app.voteUpdate',
+      url: "/vote/update/:id"
+      cache: false
+      views:
+        'menuContent':
+           templateUrl: "templates/vote/update.html"
+           controller: 'VoteCtrl'
+      resolve:
+        cliModel: 'model'
+        id: ($stateParams) ->
+          $stateParams.id
+        userList: (cliModel) ->
+          ret = new cliModel.UserList().$fetch()
+        votetypeList : (cliModel) ->
+          ret = new cliModel.VoteTypeList().$fetch()
+        model: (cliModel, id) ->
+          ret = new cliModel.Vote({id:id})
+          ret.$fetch()
 
-
-  
     $urlRouterProvider.otherwise('/vote')

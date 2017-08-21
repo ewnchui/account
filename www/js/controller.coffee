@@ -15,7 +15,7 @@ angular
     _.extend $scope,
       env: env
       navigator: navigator
-  .controller 'VoteCtrl', ($scope, model, $location, $log, $ionicModal, votetypeList) ->
+  .controller 'VoteCtrl', ($scope, model, $location, $log, $ionicModal, votetypeList, userList) ->
     $ionicModal
       .fromTemplateUrl 'templates/votetype/type.html',
         scope: $scope
@@ -29,8 +29,12 @@ angular
          $scope.userModal = modal
 
     _.extend $scope,
-      votetypeList : votetypeList.models
       model: model
+      votetypeList: votetypeList.models
+      userList: userList.models
+      selectUser: (user) ->
+        $scope.model.ownedBy = user
+        $scope.userModal.hide()
       select: (type) ->
         $scope.model.type = type
         $scope.typeModal.hide()
@@ -49,6 +53,10 @@ angular
       collection: collection
       create: ->
         $location.url "/vote/create"
+      update: (id) ->
+        $location.url "/vote/update/#{id}"
+      delete: (obj) ->
+        collection.remove obj
       loadMore: ->
         collection.$fetch()
           .then ->

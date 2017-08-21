@@ -4,3 +4,13 @@
   <p>{{model.desc}}</p>
   <p>{{model.ownedBy.email}}</p>
 </div>
+<ion-option-button
+   class="button-positive"
+   on-tap="update(model.id)">
+   Update 
+</ion-option-button>
+<ion-option-button
+   class="button button-assertive icon-left ion-trash-b"
+   on-tap="delete(model)">
+   Delete
+</ion-option-button>
