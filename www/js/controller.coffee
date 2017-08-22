@@ -31,7 +31,7 @@ angular
     _.extend $scope,
       model: model
       votetypeList: votetypeList.models
-      userList: userList.models
+      userList: _.map userList.models, (user) -> _.pick user, 'email', 'id', 'postTitle'
       selectUser: (user) ->
         $scope.model.ownedBy = user
         $scope.userModal.hide()
