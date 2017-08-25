@@ -36,3 +36,4 @@ module.exports =
       update: ['isAuth']
       add: ['isAuth']
       remove: ['isAuth']
+      sum: ['isAuth']

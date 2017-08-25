@@ -27,9 +27,17 @@ angular.module 'starter.model', ['PageableAR', 'ngFileSaver', 'ngFileUpload']
       model: User
       $urlRoot: "api/user/"
 
+    class Breakdown extends pageableAR.Model
+      $urlRoot: "api/breakdown/"
+    class BreakdownList extends pageableAR.PageableCollection
+      model: Breakdown
+      $urlRoot: "api/breakdown/"
+
     Vote: Vote
     VoteList: VoteList 
     VoteType: VoteType
     VoteTypeList: VoteTypeList
     User: User
     UserList: UserList
+    Breakdown: Breakdown
+    BreakdownList: BreakdownList

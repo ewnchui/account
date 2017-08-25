@@ -1,0 +1,10 @@
+<div class='item-content'>
+  <img src="img/icon.png">
+  <h2>{{model.vote.code}}-{{model.group}}-{{model.type}}-{{model.desc}}-HK${{model.Amt}}</h2>
+  <p>{{model.status}}-{{model.completedDate  | date: 'dd-MM-yyyy' }}</p>
+</div>
+<ion-option-button 
+  class="button button-balanced icon-left ion-ios-browsers"
+  on-tap="detail(model)">
+  Detail
+</ion-option-button>

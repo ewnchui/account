@@ -15,6 +15,16 @@ angular
     _.extend $scope,
       env: env
       navigator: navigator
+
+  .controller 'VoteTypeListCtrl', ($scope, collection, $location, $ionicPopup) ->
+    _.extend $scope,
+      collection: collection
+      loadMore: ->
+        collection.$fetch()
+          .then ->
+            $scope.$broadcast('scroll.infiniteScrollComplete')
+          .catch alert
+
   .controller 'VoteCtrl', ($scope, model, $location, $log, $ionicModal, votetypeList, userList) ->
     $ionicModal
       .fromTemplateUrl 'templates/votetype/type.html',
@@ -62,6 +72,16 @@ angular
           .then ->
             $scope.$broadcast('scroll.infiniteScrollComplete')
           .catch alert
+
+  .controller 'BreakdownListCtrl', ($scope, sort, collection, $location, $ionicPopup) ->
+    _.extend $scope,
+      collection: collection
+      loadMore: ->
+        collection.$fetch params: sort: sort
+          .then ->
+            $scope.$broadcast('scroll.infiniteScrollComplete')
+          .catch alerti
+
   .controller 'ItemCtrl', ($scope, $log, $ionicActionSheet, $location) ->
     _.extend $scope,
       showAction: ->
