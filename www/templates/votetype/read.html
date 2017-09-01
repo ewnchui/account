@@ -1,0 +1,24 @@
+<ion-view>
+  <ion-nav-buttons side="left">
+  	<button class="button button-clear icon-left ion-chevron-left" ng-click="$ionicGoBack()"></button>
+  	<h1 class="title">Votetype</h1>
+  </ion-nav-buttons>
+  <ion-content padding="true">
+	<div class="list">
+		<label class="item item-input">
+	    	<span class="input-label">Code</span>
+                <span class="input-label">{{model.code}}</span>
+		</label>
+                <div class="list card">
+                  <div class="item item-divider">
+                     Vote
+                  </div>
+                  <label
+                     ng-repeat="item in voteList"
+                     class="item item-text-wrap">
+                     <button class="button button-clear button-positive" ng-click="update(item.id)">{{item.code}}</button>
+                  </label>
+                </div>
+	</div>
+  </ion-content>
+</ion-view>

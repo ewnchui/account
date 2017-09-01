@@ -39,8 +39,37 @@ angular
       resolve:
         cliModel: 'model'
         collection: (cliModel) ->
-          ret = new cliModel.VoteTypeList()
-          ret.$fetch()
+          ret = new cliModel.VoteTypeList().$fetch()
+
+    $stateProvider.state 'app.votetypeCreate',
+      url: "/votetype/create"
+      cache: false
+      views:
+        'menuContent':
+           templateUrl: "templates/votetype/create.html"
+           controller: 'VoteTypeCtrl'
+      resolve:
+        cliModel: 'model'
+        model: (cliModel) ->
+          ret = new cliModel.VoteType()
+        voteList: (cliModel) ->
+          ret = new cliModel.VoteList().$fetch()
+
+    $stateProvider.state 'app.votetypeDetails',
+      url: "/votetype/read/:id"
+      cache: false
+      views:
+        'menuContent':
+           templateUrl: "templates/votetype/read.html"
+           controller: 'VoteTypeCtrl'
+      resolve:
+        cliModel: 'model'
+        id: ($stateParams) ->
+          $stateParams.id
+        voteList: (cliModel) ->
+          ret = new cliModel.VoteList().$fetch()
+        model: (cliModel, id) ->
+          ret = new cliModel.VoteType({id:id}).$fetch()
 
     $stateProvider.state 'app.voteList',
       url: "/vote"
@@ -52,8 +81,7 @@ angular
       resolve:
         cliModel: 'model'
         collection: (cliModel) ->
-          ret = new cliModel.VoteList()
-          ret.$fetch()
+          ret = new cliModel.VoteList().$fetch()
 
     $stateProvider.state 'app.voteCreate',
       url: "/vote/create"
@@ -87,8 +115,7 @@ angular
         votetypeList : (cliModel) ->
           ret = new cliModel.VoteTypeList().$fetch()
         model: (cliModel, id) ->
-          ret = new cliModel.Vote({id:id})
-          ret.$fetch()
+          ret = new cliModel.Vote({id:id}).$fetch()
 
     $stateProvider.state 'app.breakdownList',
       url: "/breakdown/list?sort=vote"
@@ -104,5 +131,25 @@ angular
         collection: (cliModel, sort) ->
           ret = new cliModel.BreakdownList()
           ret.$fetch params: sort: sort
+
+    $stateProvider.state 'app.breakdownCreate',
+      url: "/breakdown/create"
+      cache: false
+      views:
+        'menuContent':
+          templateUrl: "templates/breakdown/create.html"
+          controller: "BreakdownCtrl"
+      resolve:
+        cliModel: 'model'
+        model: (cliModel) ->
+          ret = new cliModel.Breakdown()
+        typeList: (model) ->
+          ret = model.selType()
+        statusList: (model) ->
+          ret = model.selStatus()
+        voteList: (cliModel) ->
+          ret = new cliModel.VoteList().$fetch()
+        userList: (cliModel) ->
+          ret = new cliModel.UserList().$fetch()
 
     $urlRouterProvider.otherwise('/vote')

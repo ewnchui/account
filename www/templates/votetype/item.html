@@ -5,6 +5,11 @@
 </div>
 <ion-option-button 
   class="button button-balanced icon-left ion-ios-browsers"
-  on-tap="detail(model)">
-  Detail
+  on-tap="details(model.id)">
+  Details
+</ion-option-button>
+<ion-option-button
+   class="button button-assertive icon-left ion-trash-b"
+   on-tap="delete(model)">
+   Delete
 </ion-option-button>

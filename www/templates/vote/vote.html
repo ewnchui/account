@@ -1,25 +1,25 @@
 <ion-modal-view>
   <ion-header-bar class="bar-positive">
-    <h1 class="title">User</h1>
+    <h1 class="title">Vote</h1>
   </ion-header-bar>
 
   <ion-content id="status">
     <div class="list card">
       <div class="item item-divider">
-       Current User 
+       Current Vote 
       </div>
-      <a class="item" href="#" editable-text="model.email" onaftersave="userModal.hide()" e-formclass="item">{{model.ownedBy.email || model.settledBy.email}}
+      <a class="item" href="#" editable-text="model.vote" onaftersave="voteModal.hide()" e-formclass="item">{{model.vote.code}}
       </a>
     </div>
     <div class="list card">
       <div class="item item-divider">
-        Select User
+        Select vote
       </div>
       <label
-       ng-repeat="item in userList"
-       ng-click="selectUser(item)"
+       ng-repeat="item in voteList"
+       ng-click="select(item)"
        class="item item-text-wrap">
-       {{item.email}}
+       {{item.code}}
       </label>
     </div>
   </ion-content>

@@ -1,6 +1,6 @@
 <ion-modal-view>
   <ion-header-bar class="bar-positive">
-    <h1 class="title">User</h1>
+    <h1 class="title">Status</h1>
   </ion-header-bar>
 
   <ion-content id="status">
@@ -8,18 +8,18 @@
       <div class="item item-divider">
        Current User 
       </div>
-      <a class="item" href="#" editable-text="model.email" onaftersave="userModal.hide()" e-formclass="item">{{model.ownedBy.email || model.settledBy.email}}
+      <a class="item" href="#" editable-text="model.status" onaftersave="statusModal.hide()" e-formclass="item">{{model.status}}
       </a>
     </div>
     <div class="list card">
       <div class="item item-divider">
-        Select User
+        Select Status
       </div>
       <label
-       ng-repeat="item in userList"
-       ng-click="selectUser(item)"
+       ng-repeat="item in statusList"
+       ng-click="selectStatus(item)"
        class="item item-text-wrap">
-       {{item.email}}
+       {{item}}
       </label>
     </div>
   </ion-content>

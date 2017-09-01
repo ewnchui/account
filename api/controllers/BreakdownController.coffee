@@ -15,4 +15,10 @@ module.exports =
          res.ok result
       .catch res.serverError
 
+   getStatus: (req, res) ->
+     return res.ok sails.models.breakdown.attributes.status.enum
+
+   getType: (req, res) ->
+     return res.ok sails.models.breakdown.attributes.type.enum
+
    
