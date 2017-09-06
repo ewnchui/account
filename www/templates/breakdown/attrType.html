@@ -1,0 +1,46 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-positive">
+    <h1 class="title">{{attr}}</h1>
+  </ion-header-bar>
+
+  <ion-content id="status">
+    <div class="list card">
+      <div class="item item-divider">
+       Current {{attr}} 
+      </div>
+      <div>
+        <label class="item item-text-wrap" ng-if="attr == 'Vote'">{{model.vote.code}}</label>
+        <label class="item item-text-wrap" ng-if="attr == 'Type'">{{model.type}}</label>
+        <label class="item item-text-wrap" ng-if="attr == 'User'">{{model.ownedBy.email || model.settledBy.email}}</label>
+        <label class="item item-text-wrap" ng-if="attr == 'Status'">{{model.status}}</label>
+      </div>
+      </a>
+    </div>
+    <div class="list card">
+      <div class="item item-divider">
+        Select {{attr}}
+      </div>
+      <label
+        ng-repeat="item in selectList"
+        ng-click="select(item)"
+        ng-if="attr == 'Vote'"
+        class="item item-text-wrap">
+        {{item.code}}
+      </label>
+      <label
+        ng-repeat="item in selectList"
+        ng-click="select(item)"
+        ng-if="attr == 'User'"
+        class="item item-text-wrap">
+        {{item.email}}
+      </label>
+      <label
+        ng-repeat="item in selectList"
+        ng-click="select(item)"
+        ng-if="attr == 'Status' || attr == 'Type'"
+        class="item item-text-wrap">
+        {{item}}
+      </label>
+    </div>
+  </ion-content>
+</ion-modal-view>

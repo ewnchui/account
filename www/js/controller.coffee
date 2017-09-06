@@ -98,45 +98,37 @@ angular
 
   .controller 'BreakdownCtrl', ($scope, model, $location, $ionicModal, voteList, userList, statusList, typeList) ->
     $ionicModal
-      .fromTemplateUrl 'templates/vote/vote.html',
+      .fromTemplateUrl 'templates/breakdown/attrType.html',
         scope: $scope
       .then (modal) ->
-        $scope.voteModal = modal
-    $ionicModal
-       .fromTemplateUrl 'templates/user/user.html',
-         scope: $scope
-       .then (modal) ->
-         $scope.userModal = modal
-    $ionicModal
-       .fromTemplateUrl 'templates/breakdown/status.html',
-         scope: $scope
-       .then (modal) ->
-         $scope.statusModal = modal
-    $ionicModal
-       .fromTemplateUrl 'templates/breakdown/type.html',
-         scope: $scope
-       .then (modal) ->
-         $scope.typeModal = modal
+        $scope.attrModal = modal
+
+    attrList = 
+      Vote: voteList.models
+      User: _.map userList.models, (user) -> _.pick user, 'email', 'id', 'postTitle'
+      Status: statusList
+      Type: typeList
+
+    selectList = []
 
     _.extend $scope,
-      model: model,
-      voteList: voteList.models
-      userList: _.map userList.models, (user) -> _.pick user, 'email', 'id', 'po
-stTitle'
-      statusList: statusList
-      typeList: typeList
-      select: (vote) ->
-        $scope.model.vote = vote
-        $scope.voteModal.hide()
-      selectUser: (user) ->
-        $scope.model.settledBy = user
-        $scope.userModal.hide()
-      selectStatus: (status) ->
-        $scope.model.status = status
-        $scope.statusModal.hide()
-      selectType: (type) ->
-        $scope.model.type = type
-        $scope.typeModal.hide()
+      model: model
+      selectList: selectList
+      selectAttr: (attr) ->
+        $scope.attr = attr
+        _.each attrList, (list, key) ->
+          if key == attr
+            $scope.selectList = list
+      select: (item) ->
+        if $scope.attr == "Vote"
+          $scope.model.vote = item
+        else if $scope.attr == "User"
+          $scope.model.settledBy = item
+        else if $scope.attr == "Status"
+          $scope.model.status = item
+        else
+          $scope.model.type = item
+        $scope.attrModal.hide()
       save: ->
         if not $scope.model.desc
           $log.error "Item Description is required"

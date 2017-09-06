@@ -8,7 +8,7 @@
 	<div class="list">
 		<label class="item item-input">
 	    	<span class="input-label">Vote Code</span>
-                <button class="button button-clear button-positive" ng-model="model.vote" ng-click="voteModal.show().$event.preventDefault();$event.stopPropagation();">{{model.vote.code || "Select" }}</button>
+                <button class="button button-clear button-positive" ng-model="model.vote" ng-click="selectAttr('Vote');attrModal.show();$event.preventDefault();$event.stopPropagation();">{{model.vote.code || "Select" }}</button>
 		</label>
                 <label class="item item-input">
                 <span class="input-label">Group</span>
@@ -16,7 +16,7 @@
                 </label>
                 <label class="item item-input">
                 <span class="input-label">Type</span>
-                <button class="button button-clear button-positive" ng-model="model.type" ng-click="typeModal.show().$event.preventDefault();$event.stopPropagation();">{{model.type || "Select" }}</button>
+                <button class="button button-clear button-positive" ng-model="model.type" ng-click="selectAttr('Type');attrModal.show();$event.preventDefault();$event.stopPropagation();">{{model.type || "Select" }}</button>
                 </label>
                 <label class="item item-input">
                 <span class="input-label">Description</span>
@@ -48,7 +48,7 @@
                 </label>
                 <label class="item item-input">
                 <span class="input-label">Status</span>
-                <button class="button button-clear button-positive" ng-model="model.status" ng-click="statusModal.show();$event.preventDefault();$event.stopPropagation();">{{model.status || "Select"}}</button>
+                <button class="button button-clear button-positive" ng-model="model.status" ng-click="selectAttr('Status');attrModal.show();$event.preventDefault();$event.stopPropagation();">{{model.status || "Select"}}</button>
                 </label>
                 <label class="item item-input">
                 <span class="input-label">Maintanence Start Date</span>
@@ -60,7 +60,7 @@
                 </label>
                 <label class="item item-input">
                 <span class="input-label">Settled By</span>
-                <button class="button button-clear button-positive" ng-model="model.settledBy" ng-click="userModal.show();$event.preventDefault();$event.stopPropagation();">{{model.settledBy.email || "Select" }}</button>
+                <button class="button button-clear button-positive" ng-model="model.settledBy" ng-click="selectAttr('User');attrModal.show();$event.preventDefault();$event.stopPropagation();">{{model.settledBy.email || "Select" }}</button>
                 </label>
                 
 
