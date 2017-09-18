@@ -34,9 +34,10 @@ module.exports =
       find: ['isAuth']
       findOne: ['isAuth']
       create: ['isAuth', 'setCreatedBy']
-      update: ['isAuth']
-      add: ['isAuth']
-      remove: ['isAuth']
-      sum: ['isAuth']
+      update: ['isAuth', 'me', 'canUpdate']
+      destroy: ['isAuth', 'me', 'canUpdate']
+      add: ['isAuth', 'me', 'canUpdate']
+      remove: ['isAuth', 'me', 'canUpdate']
+      sum: ['isAuth', 'me', 'canUpdate']
       getStatus: true
       getType: true

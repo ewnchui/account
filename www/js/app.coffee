@@ -152,4 +152,27 @@ angular
         userList: (cliModel) ->
           ret = new cliModel.UserList().$fetch()
 
+    $stateProvider.state 'app.breakdownUpdate',
+      url: "/breakdown/update/:id"
+      cache: false
+      views:
+        'menuContent':
+          templateUrl: "templates/breakdown/update.html"
+          controller: "BreakdownCtrl"
+      resolve:
+        cliModel: 'model'
+        id: ($stateParams) ->
+          $stateParams.id
+        model: (cliModel, id) ->
+          ret = new cliModel.Breakdown({id:id}).$fetch()
+        typeList: (model) ->
+          ret = model.selType()
+        statusList: (model) ->
+          ret = model.selStatus()
+        voteList: (cliModel) ->
+          ret = new cliModel.VoteList().$fetch()
+        userList: (cliModel) ->
+          ret = new cliModel.UserList().$fetch()
+
+
     $urlRouterProvider.otherwise('/vote')

@@ -1,0 +1,70 @@
+<ion-view>
+  <ion-nav-buttons side="left">
+  	<button class="button button-clear icon-left ion-chevron-left" ng-click="$ionicGoBack()"></button>
+  	<h1 class="title">Breakdown</h1>
+	<button class="button button-clear button-positive" ng-click="save()">OK</button>
+  </ion-nav-buttons>
+  <ion-content padding="true">
+	<div class="list">
+		<label class="item item-input">
+	    	<span class="input-label">Vote Code</span>
+                <button class="button button-clear button-positive" ng-model="model.vote" ng-click="selectAttr('Vote');attrModal.show();$event.preventDefault();$event.stopPropagation();">{{model.vote.code || "Select" }}</button>
+		</label>
+                <label class="item item-input">
+                <span class="input-label">Group</span>
+                <input type="text" ng-model="model.group">
+                </label>
+                <label class="item item-input">
+                <span class="input-label">Type</span>
+                <button class="button button-clear button-positive" ng-model="model.type" ng-click="selectAttr('Type');attrModal.show();$event.preventDefault();$event.stopPropagation();">{{model.type || "Select" }}</button>
+                </label>
+                <label class="item item-input">
+                <span class="input-label">Description</span>
+                <input type="text" ng-model="model.desc">
+                </label>
+                <label class="item item-input">
+                <span class="input-label">Amount (HKD)</span>
+                <input type="text" ng-model="model.Amt">
+                </label>
+                <label class="item item-input">
+                <span class="input-label">Quantity</span>
+                <input type="text" ng-model="model.qty">
+                </label>
+                <label class="item item-input">
+                <span class="input-label">Vendor</span>
+                <input type="text" ng-model="model.vendor">
+                </label>
+                <label class="item item-input">
+                <span class="input-label">EPS Ref</span>
+                <input type="text" ng-model="model.epsRef">
+                </label>
+                <label class="item item-input">
+                <span class="input-label">PO</span>
+                <input type="text" ng-model="model.po">
+                </label>
+                <label class="item item-input">
+                <span class="input-label">Invoice Date</span>
+                <input type="date" ng-model="model.InvoiceDate">
+                </label>
+                <label class="item item-input">
+                <span class="input-label">Status</span>
+                <button class="button button-clear button-positive" ng-model="model.status" ng-click="selectAttr('Status');attrModal.show();$event.preventDefault();$event.stopPropagation();">{{model.status || "Select"}}</button>
+                </label>
+                <label class="item item-input">
+                <span class="input-label">Maintanence Start Date</span>
+                <input type="date" ng-model="model.maintStartDate">
+                </label>
+                <label class="item item-input">
+                <span class="input-label">Completed Date</span>
+                <input type="date" ng-model="model.completedDate">
+                </label>
+                <label class="item item-input">
+                <span class="input-label">Settled By</span>
+                <button class="button button-clear button-positive" ng-model="model.settledBy" ng-click="selectAttr('User');attrModal.show();$event.preventDefault();$event.stopPropagation();">{{model.settledBy.email || "Select" }}</button>
+                </label>
+                
+
+
+	</div>
+  </ion-content>
+</ion-view>

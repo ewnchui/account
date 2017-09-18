@@ -133,6 +133,7 @@ angular
         if not $scope.model.desc
           $log.error "Item Description is required"
         else
+          $scope.model.createdBy = $scope.model.createdBy.id
           $scope.model.$save()
              .then ->
                 $location.url "/breakdown/list?sort=vote"
@@ -142,6 +143,8 @@ angular
       collection: collection
       create: ->
         $location.url "/breakdown/create"
+      update: (id) ->
+        $location.url "/breakdown/update/#{id}"
       loadMore: ->
         collection.$fetch params: sort: sort
           .then ->

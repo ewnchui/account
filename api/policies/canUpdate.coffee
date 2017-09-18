@@ -9,11 +9,23 @@ actionUtil = require 'sails/lib/hooks/blueprints/actionUtil'
 module.exports = (req, res, next) ->
   pk = actionUtil.requirePk(req)
   admin = process.env.ADMIN.split ','
+  values = actionUtil.parseValues(req)
 
-  sails.log.debug "user.email: #{req.user.email}"
-
-  # check if authenticated user is admin or the same user to be updated
-  if req.user.email in admin or pk == req.user.email
+  # check if authenticated user is admin
+  if req.user.email in admin
     return next()
+
+  cond = 
+    id: pk
+    createdBy: req.user.username
+  Model.findOne()
+    .where(cond)
+    .exec(err, data) ->
+      if err
+        return res.serverError err
+      if data
+        return next()
+      
+      res.forbidden()
 
   res.forbidden()

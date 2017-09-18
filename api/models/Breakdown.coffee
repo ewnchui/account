@@ -45,7 +45,7 @@ module.exports =
         new Date  
 
     createdBy:
-      model: 'user'  
+      model: 'user'
       required: true
 
     completedDate:
