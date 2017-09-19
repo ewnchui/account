@@ -1,7 +1,5 @@
 env = require './env.coffee'
 require 'PageableAR'
-require 'angular-file-saver'
-require 'ng-file-upload'
 Promise = require 'bluebird'
 _ = require 'lodash'
     
@@ -28,6 +26,10 @@ angular.module 'starter.model', ['PageableAR', 'ngFileSaver', 'ngFileUpload']
     class UserList extends pageableAR.PageableCollection
       model: User
       $urlRoot: "api/user/"
+
+    class Summary extends pageableAR.Model
+      model: Breakdown 
+      $urlRoot: "api/breakdown/vote/:vote/summary"
 
     class Breakdown extends pageableAR.Model
       $urlRoot: "api/breakdown/"
@@ -61,6 +63,23 @@ angular.module 'starter.model', ['PageableAR', 'ngFileSaver', 'ngFileUpload']
       model: Breakdown
       $urlRoot: "api/breakdown/"
 
+
+    class SummaryList extends pageableAR.Collection
+      model: Breakdown
+      $urlRoot: "api/breakdown/status"
+
+      $fetch: (opts = {}) ->
+        return new Promise (fulfill, reject) =>
+          @$sync('read', @, opts)
+            .then (res) =>
+              data = @$parse(res.data, opts)
+              if _.isArray data
+                @.models = data
+                fulfill @
+              else
+                reject 'Not a valid response type'
+            .catch reject
+
     Vote: Vote
     VoteList: VoteList 
     VoteType: VoteType
@@ -69,3 +88,5 @@ angular.module 'starter.model', ['PageableAR', 'ngFileSaver', 'ngFileUpload']
     UserList: UserList
     Breakdown: Breakdown
     BreakdownList: BreakdownList
+    Summary: Summary
+    SummaryList: SummaryList

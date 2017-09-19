@@ -9,7 +9,6 @@ module.exports =
       required: true      
       unique: true
 
-    vote:
+    votes:
       collection: 'vote'
       via: 'type'
-

@@ -174,5 +174,35 @@ angular
         userList: (cliModel) ->
           ret = new cliModel.UserList().$fetch()
 
+    $stateProvider.state 'app.VoteSummary',
+      url: "/breakdown/vote/summary"
+      cache: false
+
+      views:
+        'menuContent':
+          templateUrl: "templates/vote/summary.html"
+          controller: 'SummaryCtrl'
+
+      resolve:
+        cliModel: 'model'
+        model: (cliModel) ->
+          ret = new cliModel.Summary()
+          ret.$fetch
+
+
+    $stateProvider.state 'app.SummaryList',
+      url: "/breakdown/summary"
+      cache: false
+
+      views:
+        'menuContent':
+          templateUrl: "templates/breakdown/summary.html"
+          controller: 'SummaryListCtrl'
+      resolve:
+        cliModel: 'model'
+        collection: (cliModel) ->
+          ret = new cliModel.SummaryList()
+          ret.$fetch()
+
 
     $urlRouterProvider.otherwise('/vote')

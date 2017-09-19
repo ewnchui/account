@@ -1,19 +1,18 @@
 _ = require 'lodash'
 passport = require 'passport'
 bearer = require 'passport-http-bearer'
+oauth2 = require 'oauth2_client'
 
 passport.use 'bearer', new bearer.Strategy {} , (token, done) ->
-  oauth2 = sails.config.oauth2
-  sails.services.oauth2
-    .verify oauth2.verifyUrl, oauth2.scope, token
+  oauth2
+    .verify sails.config.oauth2.verifyURL, sails.config.oauth2.scope, token
     .then (info) ->
       sails.models.user
-        .findOrCreate _.pick(info.user, 'email')
+        .findOrCreate _.pick(info.user, ['username','email'])
         .populateAll()
     .then (user) ->
       done null, user
     .catch (err) ->
-      sails.log.debug err
       done null, false, message: err
 
 module.exports = (req, res, next) ->

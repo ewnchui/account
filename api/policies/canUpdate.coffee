@@ -7,25 +7,23 @@ actionUtil = require 'sails/lib/hooks/blueprints/actionUtil'
   assert name of process.env, "process.env.#{name} not yet defined"
 
 module.exports = (req, res, next) ->
-  pk = actionUtil.requirePk(req)
+  pk = actionUtil.requirePk req
   admin = process.env.ADMIN.split ','
-  values = actionUtil.parseValues(req)
+  Model = actionUtil.parseModel(req)
 
-  # check if authenticated user is admin
-  if req.user.email in admin
+  # check if authenticated user is admin 
+  if req.user.email in admin 
     return next()
 
-  cond = 
+  cond =
     id: pk
     createdBy: req.user.username
   Model.findOne()
-    .where(cond)
-    .exec(err, data) ->
+    .where( cond) 
+    .exec (err, data) ->
       if err
         return res.serverError err
       if data
         return next()
-      
+     
       res.forbidden()
-
-  res.forbidden()

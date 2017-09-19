@@ -1,8 +1,10 @@
 env = require './env.coffee'
 Promise = require 'bluebird'
+sails = 
+  services:
+    finance: require '../../api/services/finance.coffee'
 
 angular
-
   .module 'starter.controller', [
     'ionic' 
     'ngCordova'
@@ -137,6 +139,10 @@ angular
           $scope.model.$save()
              .then ->
                 $location.url "/breakdown/list?sort=vote"
+
+  .controller 'SummaryCtrl', ($scope, model, $location) ->
+    _.extend $scope,
+      model: model
   
   .controller 'BreakdownListCtrl', ($scope, sort, collection, $location, $ionicPopup) ->
     _.extend $scope,
@@ -151,8 +157,23 @@ angular
             $scope.$broadcast('scroll.infiniteScrollComplete')
           .catch alert
 
+  .controller 'SummaryListCtrl', ($scope, collection, $location, $ionicPopup) ->
+    _.extend $scope,
+      collection: collection
+      summaryList: _.groupBy(collection.models,'vote.code')
+      startDate: sails.services.finance.getStartDate()
+      endDate: sails.services.finance.getEndDate()
+
   .controller 'ItemCtrl', ($scope, $log, $ionicActionSheet, $location) ->
     _.extend $scope,
       showAction: ->
         return true
+
+
+  .filter 'remain', ->
+    (collection, search) ->
+      total = 0
+      _.each search, (b) ->
+        total += b.Amount
+      return total
 

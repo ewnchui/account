@@ -4,20 +4,35 @@
     </ion-nav-bar>
   	<ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
+
   <ion-side-menu side="left" ng-controller="MenuCtrl">
     <ion-header-bar class="bar-stable">
-      <h1 class="title">{{'Menu'}}</h1>
+      <h1 class="title">Menu</h1>
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item nav-clear menu-close href="#/vote/list">
-        All Vote	
-        </ion-item>
         <ion-item nav-clear menu-close href="#/votetype/list">
-        All Votetype
+        	All votetype
         </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item nav-clear menu-close href="#/vote/list">
+        	All vote
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item nav-clear menu-close href="#/vote/summary">
+        	Vote status
+        </ion-item>
+      </ion-list>
+      <ion-list>
         <ion-item nav-clear menu-close href="#/breakdown/list?sort=vote">
-        All Breakdown
+        	All Breakdown
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item nav-clear menu-close href="#/breakdown/summary">
+        	Breakdown Status
         </ion-item>
       </ion-list>
     </ion-content>
