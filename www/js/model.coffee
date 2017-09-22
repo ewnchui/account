@@ -2,10 +2,11 @@ env = require './env.coffee'
 require 'PageableAR'
 Promise = require 'bluebird'
 _ = require 'lodash'
-    
-angular.module 'starter.model', ['PageableAR', 'ngFileSaver', 'ngFileUpload']
+
+
+angular.module 'starter.model', ['PageableAR']
   
-  .factory 'model', (pageableAR, $http, $filter, $log, FileSaver, Upload, $state) ->
+  .factory 'model', (pageableAR, $http, $filter, $log, $state) ->
     class Vote extends pageableAR.Model
       $urlRoot: "api/vote/"
 
@@ -62,7 +63,6 @@ angular.module 'starter.model', ['PageableAR', 'ngFileSaver', 'ngFileUpload']
     class BreakdownList extends pageableAR.PageableCollection
       model: Breakdown
       $urlRoot: "api/breakdown/"
-
 
     class SummaryList extends pageableAR.Collection
       model: Breakdown

@@ -1,10 +1,14 @@
 module.exports = 
 	routes:
-          'GET /api/breakdown/sum':
+          'GET /api/breakdown/vote/:vote/summary':
              controller: 'BreakdownController'
-             action: 'sum'
+             action: 'summary'
              sort:
                name: 'asc'
+
+          'GET /api/breakdown/status':
+             controller: 'BreadownController'
+             action: 'status'
 
           'GET /api/breakdown/getstatus':
              controller: 'BreakdownController'

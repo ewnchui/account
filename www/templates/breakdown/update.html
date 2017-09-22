@@ -5,7 +5,7 @@
 	<button class="button button-clear button-positive" ng-click="save()">OK</button>
   </ion-nav-buttons>
   <ion-content padding="true">
-	<div class="list listBtn">
+	<div class="list">
 		<label class="item item-input">
 	    	<span class="input-label">Vote Code</span>
                 <button class="button button-clear button-positive" ng-model="model.vote" ng-click="selectAttr('Vote');attrModal.show();$event.preventDefault();$event.stopPropagation();">{{model.vote.code || "Select" }}</button>

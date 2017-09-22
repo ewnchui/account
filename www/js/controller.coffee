@@ -98,7 +98,7 @@ angular
             $scope.$broadcast('scroll.infiniteScrollComplete')
           .catch alert
 
-  .controller 'BreakdownCtrl', ($scope, model, $location, $ionicModal, voteList, userList, statusList, typeList) ->
+  .controller 'BreakdownCtrl', ($scope, model, $location, $log, $ionicModal, voteList, userList, statusList, typeList) ->
     $ionicModal
       .fromTemplateUrl 'templates/breakdown/attrType.html',
         scope: $scope
@@ -135,7 +135,8 @@ angular
         if not $scope.model.desc
           $log.error "Item Description is required"
         else
-          $scope.model.createdBy = $scope.model.createdBy.id
+          if !_.isUndefined $scope.model.createdBy
+             $scope.model.createdBy = $scope.model.createdBy.id
           $scope.model.$save()
              .then ->
                 $location.url "/breakdown/list?sort=vote"
@@ -151,6 +152,8 @@ angular
         $location.url "/breakdown/create"
       update: (id) ->
         $location.url "/breakdown/update/#{id}"
+      delete: (obj) ->
+        collection.remove obj
       loadMore: ->
         collection.$fetch params: sort: sort
           .then ->
@@ -168,7 +171,6 @@ angular
     _.extend $scope,
       showAction: ->
         return true
-
 
   .filter 'remain', ->
     (collection, search) ->

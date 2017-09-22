@@ -175,7 +175,7 @@ angular
           ret = new cliModel.UserList().$fetch()
 
     $stateProvider.state 'app.VoteSummary',
-      url: "/breakdown/vote/summary"
+      url: "/vote/summary"
       cache: false
 
       views:
@@ -189,8 +189,7 @@ angular
           ret = new cliModel.Summary()
           ret.$fetch
 
-
-    $stateProvider.state 'app.SummaryList',
+     $stateProvider.state 'app.SummaryList',
       url: "/breakdown/summary"
       cache: false
 
@@ -198,6 +197,7 @@ angular
         'menuContent':
           templateUrl: "templates/breakdown/summary.html"
           controller: 'SummaryListCtrl'
+
       resolve:
         cliModel: 'model'
         collection: (cliModel) ->

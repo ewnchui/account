@@ -12,3 +12,4 @@ module.exports =
     votes:
       collection: 'vote'
       via: 'type'
+

@@ -1,1 +1,5 @@
 @import "angular-toastr";
+
+.listBtn button {
+  padding-left: 0px;
+}

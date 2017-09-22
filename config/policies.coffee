@@ -38,6 +38,7 @@ module.exports =
       destroy: ['isAuth', 'me', 'canUpdate']
       add: ['isAuth', 'me', 'canUpdate']
       remove: ['isAuth', 'me', 'canUpdate']
-      sum: ['isAuth', 'me', 'canUpdate']
-      getStatus: true
-      getType: true
+      summary: ['isAuth']
+      status: ['isAuth']
+      getStatus: ['isAuth'] 
+      getType: ['isAuth']
