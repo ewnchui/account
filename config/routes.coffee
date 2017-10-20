@@ -6,10 +6,6 @@ module.exports =
              sort:
                name: 'asc'
 
-          'GET /api/breakdown/status':
-             controller: 'BreadownController'
-             action: 'status'
-
           'GET /api/breakdown/getstatus':
              controller: 'BreakdownController'
              action: 'getStatus'

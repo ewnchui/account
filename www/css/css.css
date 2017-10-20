@@ -246,3 +246,7 @@ div[toast].ng-leave.ng-leave-active {
     width: 25em;
   }
 }
+
+.listBtn button {
+  padding-left: 0px;
+}

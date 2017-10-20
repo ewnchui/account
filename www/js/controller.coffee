@@ -141,9 +141,12 @@ angular
              .then ->
                 $location.url "/breakdown/list?sort=vote"
 
-  .controller 'SummaryCtrl', ($scope, model, $location) ->
+  .controller 'StatusListCtrl', ($scope, collection, $location) ->
     _.extend $scope,
-      model: model
+      collection: collection
+      statusList: _.groupBy(collection.models,'status')
+      startDate: sails.services.finance.getStartDate()
+      endDate: sails.services.finance.getEndDate()
   
   .controller 'BreakdownListCtrl', ($scope, sort, collection, $location, $ionicPopup) ->
     _.extend $scope,
@@ -160,7 +163,7 @@ angular
             $scope.$broadcast('scroll.infiniteScrollComplete')
           .catch alert
 
-  .controller 'SummaryListCtrl', ($scope, collection, $location, $ionicPopup) ->
+  .controller 'SummaryListCtrl', ($scope, collection, $location) ->
     _.extend $scope,
       collection: collection
       summaryList: _.groupBy(collection.models,'vote.code')

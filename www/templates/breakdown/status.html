@@ -7,13 +7,13 @@
   </ion-nav-buttons>
   <ion-content>
   <ion-list>
-    <div ng-repeat="(key, value) in summaryList">
-    <h4>code: {{key}}, estimate:HK${{summaryList|remain:value}} </h4>
+    <div ng-repeat="(key, value) in statusList">
+    <h4>status: {{key}}, estimate:HK${{statusList|remain:value}} </h4>
     <ion-item
       class="item-avatar item-complex"
       ng-repeat="rec in value"
       ng-controller="ItemCtrl"
-      ng-include="'templates/breakdown/summaryitem.html'">
+      ng-include="'templates/breakdown/statusitem.html'">
     </ion-item>
     </div>
   </ion-list>

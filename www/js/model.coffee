@@ -64,9 +64,25 @@ angular.module 'starter.model', ['PageableAR']
       model: Breakdown
       $urlRoot: "api/breakdown/"
 
-    class SummaryList extends pageableAR.Collection
+    class StatusList extends pageableAR.Collection
       model: Breakdown
       $urlRoot: "api/breakdown/status"
+
+      $fetch: (opts = {}) ->
+        return new Promise (fulfill, reject) =>
+          @$sync('read', @, opts)
+            .then (res) =>
+              data = @$parse(res.data, opts)
+              if _.isArray data
+                @.models = data
+                fulfill @
+              else
+                reject 'Not a valid response type'
+            .catch reject
+
+    class SummaryList extends pageableAR.Collection
+      model: Breakdown
+      $urlRoot: "api/breakdown/summary"
 
       $fetch: (opts = {}) ->
         return new Promise (fulfill, reject) =>
@@ -90,3 +106,4 @@ angular.module 'starter.model', ['PageableAR']
     BreakdownList: BreakdownList
     Summary: Summary
     SummaryList: SummaryList
+    StatusList: StatusList
